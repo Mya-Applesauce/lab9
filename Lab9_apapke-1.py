@@ -28,6 +28,30 @@ def main():
             print("That isn't an answer!")
 
         player1.toss_coin()
-        player2.toss_coin() 
+        player2.toss_coin()
+        side1 = player1.get_coin_side()
+        side2 = player2.get_coin_side()
+
+        if active:
+            print(f"{player1.get_name()} got {side1}")
+            print(f"{player2.get_name()} got {side2}")
+            if side1 == side2:
+                player1.win_coin(1)
+                player2.lose_coin(1)
+                print(f"A perfect match! {player1.get_name()} wins!\n")
+            elif side1 != side2:
+                player1.lose_coin(1)
+                player2.win_coin(1)
+                print(f"Not a match! {player2.get_name()} wins!\n")
+
+    print("+++ The Final Scores +++")
+    print(f"{player1.get_name()}: {player1.get_wallet()} coins.")
+    print(f"{player2.get_name()}: {player2.get_wallet()} coins.")
+    if player1.get_wallet() > player2.get_wallet():
+        print(f"{player1.get_name()} is the victor!")
+    elif player1.get_wallet() < player2.get_wallet():
+        print(f"{player2.get_name()} is the victor!")
+    else:
+        print("We have a tie!") 
 
 main()  
